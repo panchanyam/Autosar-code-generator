@@ -1,83 +1,143 @@
 [build-system]
-requires = ["setuptools>=69.0", "wheel"]
+requires = [
+    "setuptools>=68",
+    "wheel"
+]
+
 build-backend = "setuptools.build_meta"
 
+
+
+# ============================================================================
+# Project Metadata
+# ============================================================================
+
 [project]
-name = "autosar-code-generator"
-version = "0.1.0"
-description = "Generic AUTOSAR ARXML Parser and C/C++ Code Generator"
+
+name = "autosar-codegen"
+
+version = "1.0.0"
+
+description = "AUTOSAR XML based code generation framework"
+
 readme = "README.md"
-requires-python = ">=3.12"
-license = { text = "Apache-2.0" }
+
+requires-python = ">=3.11"
+
 
 authors = [
-    { name = "Jayapandiyan" }
+    {
+        name = "AUTOSAR CodeGen Team"
+    }
 ]
+
+
+license = {
+    text = "MIT"
+}
+
 
 keywords = [
     "AUTOSAR",
     "ARXML",
-    "CAN",
-    "CANFD",
-    "FlexRay",
-    "Ethernet",
-    "Code Generator",
-    "Parser"
+    "code-generation",
+    "embedded",
+    "automotive"
 ]
 
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Programming Language :: Python :: 3.12",
-    "Operating System :: OS Independent",
-    "Topic :: Software Development",
-]
+
+
+# ============================================================================
+# Runtime Dependencies
+# ============================================================================
 
 dependencies = [
-    "lxml>=5.0.0"
-    "jinja2>=3.1.0"
-    "typer>=0.12.3",
-    "rich>=13.7.1",
-    "PyYAML>=6.0.1",
+
+    "lxml>=5.0.0",
+
+    "Jinja2>=3.1.0",
+
+    "pydantic>=2.0.0",
+
 ]
+
+
+
+# ============================================================================
+# Optional Dependencies
+# ============================================================================
 
 [project.optional-dependencies]
 
+
 dev = [
-    "pytest>=8.2.2",
-    "pytest-cov>=5.0.0",
-    "black>=24.4.2",
-    "ruff>=0.5.0",
-    "mypy>=1.10.1",
+
+    "pytest>=8.0",
+
+    "pytest-cov",
+
+    "black",
+
+    "ruff",
+
+    "mypy",
+
 ]
+
+
+
+# ============================================================================
+# CLI Entry Point
+# ============================================================================
 
 [project.scripts]
 
-autosar-codegen = "autosar_codegen.cli.main:app"
 
-[tool.black]
+autosar-codegen = (
+    "autosar_codegen.cli.main:main"
+)
 
-line-length = 100
 
-target-version = ["py312"]
 
-[tool.ruff]
-
-line-length = 100
-
-target-version = "py312"
-
-[tool.pytest.ini_options]
-
-testpaths = ["tests"]
-
-pythonpath = [
-    "src"
-]
-
-[tool.setuptools]
-
-package-dir = {"" = "src"}
+# ============================================================================
+# Package Discovery
+# ============================================================================
 
 [tool.setuptools.packages.find]
 
-where = ["src"]
+where = [
+    "src"
+]
+
+
+
+# ============================================================================
+# Development Tools
+# ============================================================================
+
+
+[tool.black]
+
+line-length = 88
+
+target-version = [
+    "py311"
+]
+
+
+
+[tool.ruff]
+
+line-length = 88
+
+target-version = "py311"
+
+
+
+[tool.mypy]
+
+python_version = "3.11"
+
+check_untyped_defs = true
+
+disallow_untyped_defs = false
