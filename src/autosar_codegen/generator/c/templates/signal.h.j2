@@ -1,0 +1,52 @@
+/**
+ * @file signals.h
+ *
+ * Generated AUTOSAR signal definitions
+ */
+
+
+#ifndef AUTOSAR_GENERATED_SIGNALS_H
+#define AUTOSAR_GENERATED_SIGNALS_H
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+
+/*
+ * AUTOSAR Signals
+ */
+
+
+{% for signal in signals %}
+
+
+/**
+ * Signal:
+ * {{ signal.name }}
+ */
+
+
+typedef struct
+{
+
+    {{ signal.datatype.name | default("uint32") }}
+    value;
+
+
+} {{ signal.name }}_Type;
+
+
+
+{% endfor %}
+
+
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif /* AUTOSAR_GENERATED_SIGNALS_H */

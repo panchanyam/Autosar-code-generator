@@ -1,0 +1,56 @@
+/**
+ * @file pdus.h
+ *
+ * Generated AUTOSAR PDU definitions
+ */
+
+
+#ifndef AUTOSAR_GENERATED_PDUS_H
+#define AUTOSAR_GENERATED_PDUS_H
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+
+/*
+ * AUTOSAR PDUs
+ */
+
+
+{% for pdu in pdus %}
+
+
+/**
+ * PDU:
+ * {{ pdu.name }}
+ */
+
+
+typedef struct
+{
+
+{% for mapping in pdu.signals %}
+
+    {{ mapping.signal.datatype.name | default("uint32") }}
+    {{ mapping.signal.name }};
+
+{% endfor %}
+
+
+} {{ pdu.name }}_Type;
+
+
+
+{% endfor %}
+
+
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif /* AUTOSAR_GENERATED_PDUS_H */
