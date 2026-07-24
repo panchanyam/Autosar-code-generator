@@ -28,6 +28,32 @@ from .dispatcher import (
     DispatcherStatistics,
 )
 
+from .datatype import (
+    DataTypeResolver,
+)
+
+from .signal import (
+    SignalResolver,
+)
+
+from .pdu import (
+    PduResolver,
+)
+
+from .frame import (
+    FrameResolver,
+)
+
+from .network import (
+    NetworkResolver,
+)
+
+from .bootstrap import (
+    DEFAULT_RESOLVERS,
+    create_default_registry,
+)
+
+
 __all__ = [
     "Resolver",
     "ResolverManager",
@@ -38,4 +64,11 @@ __all__ = [
     "RegistryStatistics",
     "ResolverDispatcher",
     "DispatcherStatistics",
+    "DataTypeResolver",
+    "SignalResolver",
+    "PduResolver",
+    "FrameResolver",
+    "NetworkResolver",
+    "DEFAULT_RESOLVERS",
+    "create_default_registry",
 ]
